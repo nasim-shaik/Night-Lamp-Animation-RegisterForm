@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.5s ease;
+    overflow: hidden;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+.lamp-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: center;
+}
+.lamp-shade{
+    width: 140px;
+    height: 100px;
+    background: #444;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+    border-radius: 5px;
+    transition: background 0.4s ease;
+}
+.light-glow{
+    position: absolute;
+    top: 100px;
+    width: 10px;
+    height: 10px;
+    border-left: 180px solid transparent;
+    border-bottom: 350px solid rgba(255, 215, 0, 0.25);
+    border-right: 180px solid transparent;
+    filter: blur(15px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.lamp-stand{
+    width: 12px;
+    height: 180px;
+    background: #666;
+}
+.lamp-base{
+    width: 120px;
+    height: 16px;
+    background: #555;
+    border-radius: 8px 8px 0 0;
+}
+.wire-container{
+    position: absolute;
+    top: 90px;
+    right: 35px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+.wire{
+    width: 3px;
+    height: 70px;
+    background: #aaa;
+    transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.wire-handle{
+    width: 16px;
+    height: 16px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/*---------------Form section--------*/
+
+.form-container{
+    background: rgba(255, 255, 255,0.95);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 320px;
+    transform: translateX(50px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+}
+.form-container h2{
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+.input-group{
+    margin-bottom: 15px;
+}
+.input-group label{
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+.input-group input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+.input-group input:focus{
+    border-color: #ffb703;
+}
+.submit-btn{
+    width: 100%;
+    padding: 12px;
+    background: #ffb703;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+body.light-on{
+    background: #2c2a20;
+}
+body.light-on .lamp-shade{
+    background: #ffb703;
+}
+body.light-on .light-glow{
+    opacity: 1;
+}
+.wire-container.pulled .wire{
+    height: 110px;
+}
+.wire-container.pulled .wire-handle{
+    transform: translateY(0);
+}
+body.light-on .form-container{
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+}
